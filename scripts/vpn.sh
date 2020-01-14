@@ -2,9 +2,17 @@
 
 CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
+source "$CURRENT_DIR/helpers.sh"
 
 vpn_status() {
-	tunnel=$(ifconfig | grep tun)
+	if command_exists "ifconfig"; then
+		tunnel=$(ifconfig | grep tun)
+	elif command_exists "ip"; then
+		tunnel=$(ip a | grep tun)
+	else
+		echo "Can't check connection"
+		return
+	fi
 	if [ ! -z "$tunnel" ]; then
 		echo "Connected"
 	else
