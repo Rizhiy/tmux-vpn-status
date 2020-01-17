@@ -13,7 +13,7 @@ vpn_status() {
 		echo "Can't check connection"
 		return
 	fi
-	if [ ! -z "$tunnel" ]; then
+	if [ -n "$tunnel" ]; then
 		echo "Connected"
 	else
 		echo "Disconnected"

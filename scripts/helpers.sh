@@ -11,26 +11,26 @@ get_tmux_option() {
 }
 
 is_osx() {
-  [ $(uname) == "Darwin" ]
+  [ "$(uname)" == "Darwin" ]
 }
 
 is_freebsd() {
-  [ $(uname) == "FreeBSD" ]
+  [ "$(uname)" == "FreeBSD" ]
 }
 
 is_openbsd() {
-  [ $(uname) == "OpenBSD" ]
+  [ "$(uname)" == "OpenBSD" ]
 }
 
 is_linux() {
-  [ $(uname) == "Linux" ]
+  [ "$(uname)" == "Linux" ]
 }
 
 is_cygwin() {
-  command -v WMIC &> /dev/null
+  command -v WMIC &>/dev/null
 }
 
 command_exists() {
   local command="$1"
-  command -v "$command" &> /dev/null
+  command -v "$command" &>/dev/null
 }
