@@ -5,7 +5,9 @@ CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 source "$CURRENT_DIR/helpers.sh"
 
 vpn_status() {
-	if command_exists "ifconfig"; then
+	if command_exists "nordvpn" && [[ ! -z "$(nordvpn status | grep "Connected")" ]]; then
+		tunnel="Connected"
+	elif command_exists "ifconfig"; then
 		tunnel=$(ifconfig | grep tun)
 	elif command_exists "ip"; then
 		tunnel=$(ip a | grep tun)
