@@ -3,7 +3,7 @@ Simple plugin to show whether VPN is active in Tmux.
 
 Adds `#{vpn_status}` format.
 
-Currently only works on Linux and only with some VPN types.
+Currently only works on Linux/MacOS and only with some VPN types.
 Contributions are welcome.
 
 ## Installation
