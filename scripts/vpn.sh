@@ -7,6 +7,8 @@ source "$CURRENT_DIR/helpers.sh"
 vpn_status() {
 	if command_exists "nordvpn" && [[ ! -z "$(nordvpn status | grep "Connected")" ]]; then
 		tunnel="Connected"
+  	elif is_osx && command_exists "scutil"; then
+		tunnel=$(scutil --nc list | grep Connected)
 	elif command_exists "ifconfig"; then
 		tunnel=$(ifconfig | grep tun)
 	elif command_exists "ip"; then
